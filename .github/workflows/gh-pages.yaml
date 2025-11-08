@@ -16,8 +16,7 @@ jobs:
         run: npx @redocly/cli@latest lint --extends minimal docs/openapi-sample.yaml
 
       - name: Convert YML to HTML
-        run: |
-          npx @redocly/cli@latest build-docs docs/openapi-sample.yaml -o ./docs/index.html
+        run: npx @redocly/cli@latest build-docs docs/openapi-sample.yaml -o ./docs/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
