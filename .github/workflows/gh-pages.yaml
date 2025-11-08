@@ -15,11 +15,10 @@ jobs:
       - name: Convert YML to HTML
         run: |
           npm install -g redoc-cli
-          redoc-cli bundle reference/TODO-List-API.yaml -o ./docs/index.html
+          npx redoc-cli bundle reference/TODO-List-API.yaml -o ./docs/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          
