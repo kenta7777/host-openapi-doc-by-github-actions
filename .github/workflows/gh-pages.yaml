@@ -12,6 +12,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Lint OpenAPI file
+        run: npx @redocly/cli@latest lint --extends minimal docs/openapi-sample.yaml
+
       - name: Convert YML to HTML
         run: |
           npx @redocly/cli@latest build-docs docs/openapi-sample.yaml -o ./docs/index.html
