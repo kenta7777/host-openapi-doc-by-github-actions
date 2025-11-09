@@ -11,17 +11,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Setup pages
+        uses: actions/configure-pages@v5
       - name: Lint OpenAPI file
         run: npx @redocly/cli@latest lint --extends minimal docs/openapi-sample.yaml
       - name: Build static files
         id: build
         run: |
-          npx @redocly/cli@latest build-docs docs/openapi-sample.yaml -o ./docs/index.html
+          npx @redocly/cli@latest build-docs docs/openapi-sample.yaml -o .output/index.html
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build_outputs_folder/
+          path: .output
   
   deploy:
     environment:
